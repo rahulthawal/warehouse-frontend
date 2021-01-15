@@ -1,13 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Product from './Product';
+import Location from './Location';
+
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+import { Navbar,Nav } from 'react-bootstrap'
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Navbar bg="dark" variant="dark" expand="lg" sticky="top">
+        <Navbar.Brand href="/">Warehouse Management</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="/product">Product</Nav.Link>
+            <Nav.Link href="/location">Location</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+      <br />
+      <Switch>
+        <Route exact path="/product">
+          { <Product /> }
+        </Route>
+        <Route path="/location">
+          { <Location /> }
+        </Route>
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

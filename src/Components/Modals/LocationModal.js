@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap'
-import ProductEditForm from '../Forms/ProductEditForm'
+import LocationEditForm from '../Forms/LocationEditForm'
 
-function ProductModalForm(props) {
+function LocationModalForm(props) {
   const [modal, setModal] = useState(false)
 
   const toggle = () => {
@@ -21,14 +21,14 @@ function ProductModalForm(props) {
       onClick={toggle}
       style={{ float: "left", marginRight: "10px" }}>{label}
     </Button>
-    title = 'Edit Product'
+    title = 'Edit Location'
   } else {
     button = <Button
       color="success"
       onClick={toggle}
       style={{ float: "left", marginRight: "10px" }}>{label}
     </Button>
-    title = 'Add New Product'
+    title = 'Add New Location'
   }
 
 
@@ -38,7 +38,7 @@ function ProductModalForm(props) {
       <Modal isOpen={modal} toggle={toggle} className={props.className}>
         <ModalHeader toggle={toggle} close={closeBtn}>{title}</ModalHeader>
         <ModalBody>
-          <ProductEditForm
+          <LocationEditForm
             addItemToState={props.addItemToState}
             updateState={props.updateState}
             toggle={toggle}
@@ -49,4 +49,4 @@ function ProductModalForm(props) {
   )
 }
 
-export default ProductModalForm
+export default LocationModalForm

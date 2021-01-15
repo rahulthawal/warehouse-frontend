@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'reactstrap'
-import ProductModalForm from './Components/Modals/ProductModal'
-import ProductDataTable from './Components/Tables/ProductDataTable'
+import LocationModalForm from './Components/Modals/LocationModal'
+import LocationDataTable from './Components/Tables/LocationDataTable'
 import { CSVLink } from "react-csv"
 
-function App(props) {
+function Location(props) {
 
   const [items, setItems] = useState([])
 
-  const getItems = () => {
-    fetch('http://localhost:8080/api/product')
+  const getLocations = () => {
+    fetch('http://localhost:8080/api/location')
       .then(response => response.json())
       .then(items => setItems(items))
       .catch(err => console.log(err))
@@ -31,36 +31,36 @@ function App(props) {
   }
 
   useEffect(() => {
-    getItems()
+    getLocations()
   }, []);
 
   return (
-    <Container className="App">
+    <Container className="Location">
       <Row>
         <Col>
-          <h1 style={{ margin: "20px 0" }}>Product List</h1>
+          <h1 style={{ margin: "20px 0" }}>Location List</h1>
         </Col>
       </Row>
       <Row>
         <Col>
-          <ProductDataTable items={items} updateState={updateState} deleteItemFromState={deleteItemFromState} />
+          <LocationDataTable items={items} updateState={updateState} deleteItemFromState={deleteItemFromState} />
         </Col>
       </Row>
       <Row>
         <Col>
           <CSVLink
-            filename={"db.csv"}
+            filename={"location_report.csv"}
             color="primary"
             style={{ float: "left", marginRight: "10px" }}
             className="btn btn-primary"
             data={items}>
-            Product Report
+            Location Report
             </CSVLink>
-          <ProductModalForm buttonLabel="Add Item" addItemToState={addItemToState} />
+          <LocationModalForm buttonLabel="Add Item" addItemToState={addItemToState} />
         </Col>
       </Row>
     </Container>
   )
 }
 
-export default App
+export default Location
