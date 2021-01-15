@@ -3,7 +3,6 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 function LocationEditForm(props) {
   const [form, setValues] = useState({
-    locationid: 0,
     locationname: ''
   })
 
@@ -52,7 +51,6 @@ function LocationEditForm(props) {
       .then(response => response.json())
       .then(item => {
         if (Array.isArray(item)) {
-          // console.log(item[0])
           props.updateState(item[0])
           props.toggle()
         } else {

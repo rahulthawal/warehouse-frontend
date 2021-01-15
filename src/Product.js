@@ -10,17 +10,13 @@ function Product(props) {
 
   const getProducts = () => {
     fetch('http://localhost:8080/api/product')
-      .then(response => response.json())
+      .then(response =>
+        response.json()
+      )
       .then(items => setItems(items))
       .catch(err => console.log(err))
   }
 
-  // const getLocations = () => {
-  //   fetch('http://localhost:8080/api/location')
-  //     .then(response => response.json())
-  //     .then(items => setItems(items))
-  //     .catch(err => console.log(err))
-  // }
 
   const addItemToState = (item) => {
     setItems([...items, item])
@@ -36,7 +32,7 @@ function Product(props) {
     const updatedItems = items.filter(item => item.id !== id)
     setItems(updatedItems)
   }
-  // const a= {}, b={};
+  
   useEffect(() => {
     getProducts()
   }, []);

@@ -3,7 +3,6 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 function ProductEditForm(props) {
   const [form, setValues] = useState({
-    productid: 0,
     productname: '',
     productimage: '',
     productcategory: ''
