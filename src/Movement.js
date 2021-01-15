@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'reactstrap'
-import ProductModalForm from './Components/Modals/ProductModal'
-import ProductDataTable from './Components/Tables/ProductDataTable'
+import MovementModalForm from './Components/Modals/MovementModal'
+import MovementDataTable from './Components/Tables/MovementDataTable'
 import { CSVLink } from "react-csv"
 
-function Product(props) {
+function Movement(props) {
 
   const [items, setItems] = useState([])
 
-  const getProducts = () => {
-    fetch('http://localhost:8080/api/product')
-      .then(response =>
-        response.json()
-      )
+  const getMovements = () => {
+    fetch('http://localhost:8080/api/movement')
+      .then(response => response.json())
       .then(items => setItems(items.data))
       .catch(err => console.log(err))
   }
-
 
   const addItemToState = (item) => {
     setItems([...items, item])
@@ -32,38 +29,38 @@ function Product(props) {
     const updatedItems = items.filter(item => item.id !== id)
     setItems(updatedItems)
   }
-  
+
   useEffect(() => {
-    getProducts()
+    getMovements()
   }, []);
 
   return (
-    <Container className="Product">
+    <Container className="Movement">
       <Row>
         <Col>
-          <h1 style={{ margin: "20px 0" }}>Product List</h1>
+          <h1 style={{ margin: "20px 0" }}>Movement List</h1>
         </Col>
       </Row>
       <Row>
         <Col>
-          <ProductDataTable items={items} updateState={updateState} deleteItemFromState={deleteItemFromState} />
+          <MovementDataTable items={items} updateState={updateState} deleteItemFromState={deleteItemFromState} />
         </Col>
       </Row>
       <Row>
         <Col>
           <CSVLink
-            filename={"product_report.csv"}
+            filename={"movement_report.csv"}
             color="primary"
             style={{ float: "left", marginRight: "10px" }}
             className="btn btn-primary"
             data={items}>
-            Product Report
+            Movement Report
             </CSVLink>
-          <ProductModalForm buttonLabel="Add Item" addItemToState={addItemToState} />
+          <MovementModalForm buttonLabel="Add Product Movement" addItemToState={addItemToState} />
         </Col>
       </Row>
     </Container>
   )
 }
 
-export default Product
+export default Movement

@@ -11,7 +11,7 @@ function Location(props) {
   const getLocations = () => {
     fetch('http://localhost:8080/api/location')
       .then(response => response.json())
-      .then(items => setItems(items))
+      .then(items => setItems(items.data))
       .catch(err => console.log(err))
   }
 

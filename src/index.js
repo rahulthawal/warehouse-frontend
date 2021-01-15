@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Product from './Product';
 import Location from './Location';
+import Movement from './Movement';
+
 
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,6 +27,8 @@ ReactDOM.render(
           <Nav className="mr-auto">
             <Nav.Link href="/product">Product</Nav.Link>
             <Nav.Link href="/location">Location</Nav.Link>
+            <Nav.Link href="/movement">Product Movement</Nav.Link>
+
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -35,6 +39,9 @@ ReactDOM.render(
         </Route>
         <Route path="/location">
           { <Location /> }
+        </Route>
+        <Route path="/movement">
+          { <Movement /> }
         </Route>
       </Switch>
     </Router>
