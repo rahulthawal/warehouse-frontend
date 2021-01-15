@@ -1,8 +1,8 @@
 import React from 'react'
 import { Table, Button } from 'reactstrap';
-import ModalForm from '../Modals/Modal'
+import ProductModalForm from '../Modals/ProductModal'
 
-function DataTable(props) {
+function ProductDataTable(props) {
   const deleteItem = productid => {
     let confirmDelete = window.confirm('Delete item forever?')
     if (confirmDelete) {
@@ -32,7 +32,7 @@ function DataTable(props) {
         <td>{item.productcategory}</td>
         <td>
           <div style={{ width: "110px" }}>
-            <ModalForm buttonLabel="Edit" item={item} updateState={props.updateState} />
+            <ProductModalForm buttonLabel="Edit" item={item} updateState={props.updateState} />
             {' '}
             <Button color="danger" onClick={() => deleteItem(item.productid)}>Delete</Button>
           </div>
@@ -59,4 +59,4 @@ function DataTable(props) {
   )
 }
 
-export default DataTable
+export default ProductDataTable

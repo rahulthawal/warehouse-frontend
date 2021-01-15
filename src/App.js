@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col } from 'reactstrap'
-import ModalForm from './Components/Modals/Modal'
-import DataTable from './Components/Tables/DataTable'
+import ProductModalForm from './Components/Modals/ProductModal'
+import ProductDataTable from './Components/Tables/ProductDataTable'
 import { CSVLink } from "react-csv"
 
 function App(props) {
@@ -43,7 +43,7 @@ function App(props) {
       </Row>
       <Row>
         <Col>
-          <DataTable items={items} updateState={updateState} deleteItemFromState={deleteItemFromState} />
+          <ProductDataTable items={items} updateState={updateState} deleteItemFromState={deleteItemFromState} />
         </Col>
       </Row>
       <Row>
@@ -56,7 +56,7 @@ function App(props) {
             data={items}>
             Product Report
             </CSVLink>
-          <ModalForm buttonLabel="Add Item" addItemToState={addItemToState} />
+          <ProductModalForm buttonLabel="Add Item" addItemToState={addItemToState} />
         </Col>
       </Row>
     </Container>

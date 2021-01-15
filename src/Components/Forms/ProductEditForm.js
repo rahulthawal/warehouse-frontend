@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-function AddEditForm(props) {
+function ProductEditForm(props) {
   const [form, setValues] = useState({
     productid: 0,
     productname: '',
@@ -94,4 +94,4 @@ function AddEditForm(props) {
   )
 }
 
-export default AddEditForm
+export default ProductEditForm
