@@ -22,7 +22,6 @@ function MovementDataTable(props) {
         .catch(err => console.log(err))
     }
   }
-  console.log('PROPS', props);
   const items = props.items.map(item => {
     return (
       <tr key={item.movementid}>
